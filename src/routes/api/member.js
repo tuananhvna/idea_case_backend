@@ -156,12 +156,7 @@ member.delete("/:id", (req, res) => {
 /** http://localhost:PORT/api/member/    with method=PUT **/
 
 member.put("/", (req, res) => {
-
-  if (isNaN(req.params.id)) {
-    requestErrorHandler(res, "Member id should be number and this is not: " + req.params.id);
-  } else if (req.params.id < 1) {
-    requestErrorHandler(res, "Member id should be >= 1 and this is not: " + req.params.id);
-  } else if (!req.body.firstName) {
+  if (!req.body.firstName) {
     requestErrorHandler(res, "first name is missing.")
   } else if (!req.body.lastName) {
     requestErrorHandler(res, "last name is missing.")
