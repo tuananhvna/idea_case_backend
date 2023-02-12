@@ -40,3 +40,36 @@ export const validateAddCategory = [
   .bail(),
   check("isActive").matches(/^[01]$/).withMessage("Must be 0 or 1").bail(),
 ];
+
+export const validateAddMember = [
+  check("firstName")
+    .isLength({ min: 1, max: 50 })
+    .withMessage("Must be between 1-50 characters long")
+    .bail()
+    .matches(/^[A-Za-zäöåÄÖÅ\s-]*$/)
+    .withMessage("Must contain only letters")
+    .bail()
+    .notEmpty()
+    .withMessage("Cannot be empty")
+    .bail(),
+  check("lastName")
+    .isLength({ min: 1, max: 50 })
+    .withMessage("Must be between 1-50 characters long")
+    .bail()
+    .matches(/^[A-Za-zäöåÄÖÅ\s-]*$/)
+    .withMessage("Must contain only letters")
+    .bail()
+    .notEmpty()
+    .withMessage("Cannot be empty")
+    .bail(),
+  check("email")
+    .isLength({ min: 5, max: 255 })
+    .withMessage("Must be between 5-255 characters long")
+    .bail()
+    .matches(/^\S+@\S+\.\S+$/)
+    .withMessage("Must be in format a@b.c")
+    .bail()
+    .notEmpty()
+    .withMessage("Cannot be empty")
+    .bail(),
+];
